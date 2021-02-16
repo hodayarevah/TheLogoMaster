@@ -4,8 +4,8 @@ import * as Permissions from 'expo-permissions';
 import React, { Component } from "react";
 import { Container } from "native-base";
 import * as ImagePicker from "expo-image-picker";
-import {Image,View,Button } from 'react-native';
-import {  Text,Item,Form,Input, Label, Icon, Thumbnail } from 'native-base';
+import {Image,View ,ImageBackground} from 'react-native';
+import {  Text,Item, Button,Form,Input, Label, Icon, Thumbnail } from 'native-base';
 import styles from "./MyStyle";
 class NewUser extends Component {
   constructor(props) {

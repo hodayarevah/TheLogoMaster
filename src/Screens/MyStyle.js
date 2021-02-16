@@ -54,6 +54,8 @@ marginTop:"50%",
 backgroundColor: "#B4DAED",
 padding: 20,
 margin: 10,
+borderWidth: 1,
+borderColor:"#17F1FF",
  },
 
   modalView:{
@@ -131,6 +133,16 @@ noteViewtitle:{
   textAlign: "center",
   backgroundColor: "#4682b4",
   paddingTop:'20%'
+
+},
+noteViewtitlex:{
+
+  textAlign: "center",
+  backgroundColor: "#4682b4",
+  paddingTop:'45%'
+
+},
+ava:{
 
 },
 
