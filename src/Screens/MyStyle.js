@@ -4,7 +4,7 @@ import {StyleSheet} from 'react-native';
  export default styles = StyleSheet.create({
 
   btnadd:{
-    color: '#e6e6fa',  
+    color: '#5271ff',  
    fontSize: 12, 
    fontWeight: '700',
       
@@ -17,7 +17,7 @@ import {StyleSheet} from 'react-native';
   
   },
   text: {
-    color: "#4682b4",
+    color: "#5271ff",
     fontSize: 52,
     fontWeight: "bold",
     textAlign: "center",
@@ -28,25 +28,30 @@ import {StyleSheet} from 'react-native';
   king:{
 height: 350, 
 width: 250, 
-alignSelf: 'center'
+alignSelf: 'center',
+marginTop:'55%'
 
   },
   butn:{
-    color: "#add8e6",
+    color: "#5271ff",
     alignSelf: 'center',
+    borderColor:"#f632f4",
+    borderRadius: 100,
+    padding:10,
+    borderWidth: 1
   },
   butnx:{
     marginTop:'20%',
-    color: "#add8e6",
+    color: "#5271ff",
     alignSelf: 'center',
   },
  buttadd:{
-  color: '#e6e6fa'
+  color: '#5271ff'
    
  },
  login:{
 marginTop:"50%",
-backgroundColor: "#add8e6",
+backgroundColor: "#B4DAED",
 padding: 20,
 margin: 10,
  },
@@ -80,7 +85,7 @@ name:{
   textAlign: "left"
 },
 go:{
-  color:"white", 
+  color:"#17F1FF", 
   fontSize: 32, 
 
 

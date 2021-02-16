@@ -4,8 +4,8 @@ import * as Permissions from 'expo-permissions';
 import React, { Component } from "react";
 import { Container } from "native-base";
 import * as ImagePicker from "expo-image-picker";
-import {Image,View } from 'react-native';
-import { Button, Text,Item,Form,Input, Label, Icon, Thumbnail } from 'native-base';
+import {Image,View,Button } from 'react-native';
+import {  Text,Item,Form,Input, Label, Icon, Thumbnail } from 'native-base';
 import styles from "./MyStyle";
 class NewUser extends Component {
   constructor(props) {
@@ -117,6 +117,9 @@ else{
      else {
     return (
       <>
+      
+      <ImageBackground source= {require('../backc.png')} style={styles.image}>
+   
             <View style={styles.noteViewtitle}>
             <Text style={styles.notetitle} > Add new user </Text>
             </View>
@@ -149,6 +152,8 @@ else{
               </Button>
              
      
+              </ImageBackground>
+   
 
 </>
     );

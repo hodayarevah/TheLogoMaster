@@ -80,9 +80,9 @@ postdata=()=>
     
     <ImageBackground source= {require('../back.png')} style={styles.image}>
        
-          <Text style={styles.text}>Logo Master</Text>
+          
           <Image style={styles.king} source= {require('../king.gif')} />
-          <Button rounded style={styles.butn} onPress={() => this.props.navigation.navigate('login')}>
+          <Button  style={styles.butn} onPress={() => this.props.navigation.navigate('login')}>
           <Icon reverse style={styles.go}  name='play'  />
           <Text style={styles.words}> play </Text>
         

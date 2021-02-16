@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {SafeAreaView, ScrollView, Text,View } from 'react-native';
+import {SafeAreaView, ScrollView, Text,View,ImageBackground } from 'react-native';
 import NoteCard from './Logo';
 import styles from "./MyStyle";
 import { Icon } from 'react-native-elements';
@@ -22,7 +22,7 @@ class gameView extends Component {
   render() {
    
     return (
-      <ImageBackground source= {require('../back.png')} style={styles.image}>
+      <ImageBackground source= {require('../backb.png')} style={styles.image}>
    
       <View style={styles.login} >
      
@@ -31,7 +31,7 @@ class gameView extends Component {
        
   
       </View>
-  <View></View>
+
       
       <Button rounded style={styles.butnx} onPress={() => this.props.navigation.navigate('newuser')}>
             <Text style={styles.words}> New Player</Text>

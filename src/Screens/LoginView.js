@@ -57,7 +57,7 @@ class  LoginView extends React.Component {
   {
 
    return(
-    <ImageBackground source= {require('../back.png')} style={styles.image}>
+    <ImageBackground source= {require('../backb.png')} style={styles.image}>
    
     <View style={styles.login} >
    
