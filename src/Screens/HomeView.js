@@ -9,21 +9,20 @@ class HomeView extends Component {
     super(props);
     this.state = {
       logolist:[],
-      name:["Apple"],
+      name:["apple"],
+      logo:"",
     };
   }
 
-  componentDidMount(){
+  letsgo=()=>{
 
     this.state.name.forEach(element => {
-
-    let str="www."+element+".com"
 
     var myHeaders = new Headers();
 myHeaders.append("x-api-key", "Ak26dTKXRM82dP3iS5Jq796Ncd3At98G6IzS7X8z");
 myHeaders.append("Content-Type", "application/json");
 
-var raw = JSON.stringify({"domain":{str}});
+var raw = JSON.stringify({"domain":"www."+element+".com"});
 
 var requestOptions = {
   method: 'POST',
@@ -32,18 +31,19 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-fetch("https://api.brandfetch.io/v1/company", requestOptions)
-  .then(response => 
-    {
-    const logo={
+fetch("https://api.brandfetch.io/v1/logo", requestOptions)
+ .then((response) => response.text())
+ .then((result) => {
+   console.log(result)
+    this.setState.logo=({
       logoName:{element},
-     logoImg:response.logo.icon.image.text(),
+     logoImg:result.icon.image,
 
-    }
+    })
     this.setState.logolist.push(logo)
     })
     
-  .then(result => console.log(result))
+  
   .catch(error => console.log('error', error));
       
     });
@@ -87,7 +87,10 @@ postdata=()=>
           <Text style={styles.words}> play </Text>
         
           </Button>
+          <Button rounded style={styles.butn} onPress={this.letsgo}>
+          <Text style={styles.words}> go </Text>
         
+          </Button>
 
       </ImageBackground>
     

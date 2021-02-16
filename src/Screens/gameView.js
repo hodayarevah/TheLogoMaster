@@ -31,7 +31,7 @@ class gameView extends Component {
        
   
       </View>
-  
+  <View></View>
       
       <Button rounded style={styles.butnx} onPress={() => this.props.navigation.navigate('newuser')}>
             <Text style={styles.words}> New Player</Text>

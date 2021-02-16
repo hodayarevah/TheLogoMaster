@@ -177,9 +177,13 @@ categtitle:{
 
     height: 100, 
     width: 150, 
-    alignSelf: 'center'}
-    }
-
+    alignSelf: 'center'
+  },
   
 
-);
+    imagene: {
+      flex: 1,
+      width: '50%'
+    },
+
+  })

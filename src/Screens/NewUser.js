@@ -1,11 +1,9 @@
-  
+
+import { Row} from 'react-native-easy-grid';
+import * as Permissions from 'expo-permissions';  
 import React, { Component } from "react";
 import { Container } from "native-base";
-import { StyleSheet, Image, ScrollView, Keyboard } from "react-native";
-import AddImage from "../Components/AddImage";
-import { AutoGrowingTextInput } from "react-native-autogrow-textinput";
 import * as ImagePicker from "expo-image-picker";
-import React, {Component} from 'react';
 import {Image,View } from 'react-native';
 import { Button, Text,Item,Form,Input, Label, Icon, Thumbnail } from 'native-base';
 import styles from "./MyStyle";
@@ -18,27 +16,45 @@ class NewUser extends Component {
       VerPass:"",
       points:0,
       stage:0,
-      img:"",
+      image:"",
+      hasCameraPermission: null,
 
     };
 
   }
 
-  openGallery = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
-      base64: true,
-    });
-    
-    console.log(result);
+  
+  async componentDidMount() {
+  
+    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    this.setState({ hasCameraPermission: status === "granted" });  
 
+  }
+
+
+
+  OpenGallery = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+     allowsEditing: true,
+     aspect: [4, 3]
+    });
     if (!result.cancelled) {
-      this.setState({ img: result.uri, imgBase64: result.base64 });
+      this.setState({ image: result.uri });
+      alert("image uploded")
     }
-  };
+  }
+  OpenCamera = async () => {
+    let result = await ImagePicker.launchCameraAsync({
+     allowsEditing: true,
+     aspect: [4, 3],
+     quality:1
+     
+    });
+    if (!result.cancelled) {
+      this.setState({ image: result.uri });
+      alert("image uploded")
+    }
+  }
 
   SubmitNew =()=>{
 
@@ -47,18 +63,17 @@ class NewUser extends Component {
       alert("the password dose not match try agin")
     }
 else{
- const user=({
-    UserName: this.state.NewUserName,
-    UserPass:this.state.NewUserPass,
-    points:this.state.points,
-    stage:this.state.stage,
-    img:this.state.img
-   })
+
+
 
   const url = `http://localhost:44321/api/Users_LM/`
     fetch(url, {
       method: 'POST',
-      body: JSON.stringify({user}),
+      body: JSON.stringify({ UserName: this.state.NewUserName,
+        UserPass:this.state.NewUserPass,
+        points:this.state.points,
+        stage:this.state.stage,
+        image:this.state.image}),
       headers: new Headers({
         'Content-Type': 'application/json; charset=UTF-8',
         'Accept': 'application/json; charset=UTF-8'
@@ -77,6 +92,7 @@ else{
       NewUserName:"",
       NewUserPass:"",
       VerPass:"",
+      image:""
       
     });
       this.props.navigation.goBack();
@@ -89,15 +105,24 @@ else{
 
   
   render() {
- 
+    const {image,hasCameraPermission} = this.state;
     const {navigation} = this.props
 
+    if (hasCameraPermission === null) {
+      return <View />;
+     }
+     else if (hasCameraPermission === false) {
+      return <Text>Access err</Text>;
+     }
+     else {
     return (
       <>
             <View style={styles.noteViewtitle}>
             <Text style={styles.notetitle} > Add new user </Text>
             </View>
+            
             <Form style={{paddingTop:'20%'}}>
+
              <Item floatingLabel  > 
              <Label>Insert your name</Label>
                 <Input onChangeText={newname=> this.setState({NewUserName: newname})}/>
@@ -110,13 +135,15 @@ else{
              <Label>verify password</Label>
              <Input  onChangeText={Info=> this.setState({VerPass: Info})} />
              </Item>
-             {this.state.img ? <Image
-                  style={stylesCP.image}
-                  source={{uri: `data:image/gif;base64,${this.state.img}`}}
-                ></Image> : null}
-        <AddImage parent={this}  openGallery={this.openGallery} nav={this.props.navigation} saveNote={this.saveNote} deleteNote={this.deleteNote}/>
-        
-            </Form>        
+            </Form>  
+            <Text>You can add an image</Text>
+                <View style={styles.imagecon} >
+                {image ? (<Image source={{ uri: image }} />) : (<View/>)}
+                </View>     
+                <Row>
+                <Icon raised name='camera' onPress={this.OpenCamera}></Icon>
+                <Icon raised name='image'onPress={this.OpenGallery}></Icon>  
+               </Row>       
               <Button style={styles.SubmitBtn} onPress={this.SubmitNew} >
                <Text>Submit</Text>
               </Button>
@@ -126,6 +153,7 @@ else{
 </>
     );
    }
+  }
   }
 
 export default NewUser;
