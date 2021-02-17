@@ -160,7 +160,6 @@
                 <bindings>
                     <binding protocol="https" bindingInformation="*:44321:localhost" />
                     <binding protocol="http" bindingInformation="*:52068:localhost" />
-                  <binding protocol="https" bindingInformation="192.168.0.107:44321:*" />
                 </bindings>
             </site>
 			<siteDefaults>

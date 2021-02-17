@@ -144,6 +144,7 @@ noteViewtitlex:{
 },
 ava:{
 
+
 },
 
 iconaddnote:{

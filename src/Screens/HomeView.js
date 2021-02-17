@@ -15,9 +15,8 @@ class HomeView extends Component {
   }
 
   letsgo=()=>{
-  const url = `http://192.168.0.107:44321/api/Logo/`
+  const url = `http://192.168.0.107:51342/api/Logo/`
   let data=this.state.name
- 
   fetch(url, {
     method: 'Post',
     body: JSON.stringify(data),

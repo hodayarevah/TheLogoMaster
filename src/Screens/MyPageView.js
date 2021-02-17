@@ -41,7 +41,7 @@ class MyPageView extends Component {
 
             <View style={styles.noteViewtitlex}>
 
-            <Avatar rounded size="large" source={require('../backb.png')}/>
+            <Avatar style={styles.ava} rounded size="large" source={{  uri:  'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg', }}/>
             <Text style={styles.notetitle} > Hello {this.state.UserName} </Text>
             </View>
             <Text  > points  {this.state.points} </Text>
