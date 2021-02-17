@@ -8,55 +8,17 @@ class HomeView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      logolist:[],
-      name:["apple"],
+      logolist:["apple"],
+      name:[{LogoName:"apple",LogoImg:"https://help.apple.com/assets/5C2D31DA0946224012A6B385/5C2D345D0946227F55A6AEB2/en_US/0eb401f9019e0c90e1b7e49a38052daf.png"}],
       logo:"",
     };
   }
 
   letsgo=()=>{
 
-    this.state.name.forEach(element => {
 
-    var myHeaders = new Headers();
-myHeaders.append("x-api-key", "Ak26dTKXRM82dP3iS5Jq796Ncd3At98G6IzS7X8z");
-myHeaders.append("Content-Type", "application/json");
-
-var raw = JSON.stringify({"domain":"www."+element+".com"});
-
-var requestOptions = {
-  method: 'POST',
-  headers: myHeaders,
-  body: raw,
-  redirect: 'follow'
-};
-
-fetch("https://api.brandfetch.io/v1/logo", requestOptions)
- .then((response) => response.text())
- .then((result) => {
-   console.log(result)
-    this.setState.logo=({
-      logoName:{element},
-     logoImg:result.icon.image,
-
-    })
-    this.setState.logolist.push(logo)
-    })
-    
-  
-  .catch(error => console.log('error', error));
-      
-    });
-
-    this.postdata()
-
-  }
-
-
-postdata=()=>
-{
-  const url = `http://localhost:44321/api/Logo_LM/`
-  let data=this.state.logolist
+  const url = `http://localhost:44321/api/Logo/`
+  let data=this.state.name
   fetch(url, {
     method: 'POST',
     body: JSON.stringify({data}),
@@ -68,11 +30,12 @@ postdata=()=>
   .then((res) => {
    alert("sucssess")
     return res.json(); 
-  }),
-  (error) => {
-    alert("noooo "+error)
-    console.log("err post=", error);
-  };
+  },(err) => {
+    console.warn('error',err)
+  })
+  .catch(err => alert(err)) 
+  
+  
 }
   render() {
     return (  

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using logoMaster.Models;
+using ThelogoMaster.Models;
 
-namespace logoMaster.Controllers
+namespace ThelogoMaster.Controllers
 {
     public class UsersController : ApiController
     {
