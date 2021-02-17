@@ -66,7 +66,7 @@ else{
 
 
 
-  const url = `http://localhost:44321/api/Users_LM/`
+  const url = `http://192.168.0.107:51342/api/Logo/`
     fetch(url, {
       method: 'POST',
       body: JSON.stringify({ UserName: this.state.NewUserName,
