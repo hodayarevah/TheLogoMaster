@@ -15,13 +15,12 @@ class HomeView extends Component {
   }
 
   letsgo=()=>{
-
-
-  const url = `http://localhost:44321/api/Logo/`
+  const url = `http://192.168.0.107:44321/api/Logo/`
   let data=this.state.name
+ 
   fetch(url, {
-    method: 'POST',
-    body: JSON.stringify({data}),
+    method: 'Post',
+    body: JSON.stringify(data),
     headers: new Headers({
       'Content-Type': 'application/json; charset=UTF-8',
       'Accept': 'application/json; charset=UTF-8'
@@ -32,6 +31,7 @@ class HomeView extends Component {
     return res.json(); 
   },(err) => {
     console.warn('error',err)
+    alert("noooooo"+{err})
   })
   .catch(err => alert(err)) 
   

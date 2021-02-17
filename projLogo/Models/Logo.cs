@@ -20,7 +20,12 @@ namespace ThelogoMaster.Models
             LogoName = logoName;
             LogoImg = logoImg;
         }
+        public Logo(string logoName, string logoImg)
+        {
 
+            LogoName = logoName;
+            LogoImg = logoImg;
+        }
         public int Stage { get => stage; set => stage = value; }
         public string LogoName { get => logoName; set => logoName = value; }
         public string LogoImg { get => logoImg; set => logoImg = value; }
