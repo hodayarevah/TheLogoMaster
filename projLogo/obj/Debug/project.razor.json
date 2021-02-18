@@ -4,6 +4,7 @@
     "ConfigurationName": "UnsupportedRazor",
     "LanguageVersion": "1.0",
     "Extensions": [
+      {
         "ExtensionName": "UnsupportedRazorExtension"
       }
     ]
