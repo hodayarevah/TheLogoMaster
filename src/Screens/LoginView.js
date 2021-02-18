@@ -76,7 +76,7 @@ class  LoginView extends React.Component {
 
 <Input placeholder="Password" secureTextEntry={true}   onChangeText={InputTitle=> this.setState({UserPass: InputTitle})}/>
 
-          <Button rounded style={styles.butn} onPress ={() =>this.props.navigation.navigate('gameView')}>
+          <Button rounded style={styles.butn} onPress ={() =>this.props.navigation.navigate('mypro')}>
         
                <Text style={styles.words}>Log in</Text>
               </Button>

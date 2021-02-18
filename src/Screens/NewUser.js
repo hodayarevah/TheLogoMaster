@@ -18,6 +18,7 @@ class NewUser extends Component {
       stage:0,
       image:"",
       hasCameraPermission: null,
+      newuser:"",
 
     };
 
@@ -64,16 +65,16 @@ class NewUser extends Component {
     }
 else{
 
-
+  this.setState({newuser:{ UserName: this.state.NewUserName,
+    UserPass:this.state.NewUserPass,
+    points:this.state.points,
+    stage:this.state.stage,
+    image:this.state.image}})
 
   const url = `http://192.168.0.107:51342/api/Logo/`
     fetch(url, {
-      method: 'POST',
-      body: JSON.stringify({ UserName: this.state.NewUserName,
-        UserPass:this.state.NewUserPass,
-        points:this.state.points,
-        stage:this.state.stage,
-        image:this.state.image}),
+      method: 'Post',
+      body: JSON.stringify(this.state.newuser),
       headers: new Headers({
         'Content-Type': 'application/json; charset=UTF-8',
         'Accept': 'application/json; charset=UTF-8'

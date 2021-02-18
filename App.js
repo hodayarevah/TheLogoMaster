@@ -8,7 +8,8 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeView from './src/Screens/HomeView';
 import LoginView from './src/Screens/LoginView'
-import gameView from './src/Screens/MyPageView';
+import gameView from './src/Screens/gameView';
+import mypro from "./src/Screens/MyPageView"
 import NewUser from './src/Screens/NewUser';
 
 
@@ -39,6 +40,7 @@ export default class App extends React.Component {
        <Drawer.Screen name="Home" component={HomeView}  />
        <Drawer.Screen name="login" component={LoginView} />
        <Drawer.Screen name="gameView" component={gameView} />
+       <Drawer.Screen name="mypro" component={mypro} />
        <Drawer.Screen name="newuser" component={NewUser} />
          </Drawer.Navigator >
       </NavigationContainer>
