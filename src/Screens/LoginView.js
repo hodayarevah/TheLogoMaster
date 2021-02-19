@@ -13,6 +13,8 @@ class  LoginView extends React.Component {
       UserName:"",
       UserPass:"",
       UserId:"",
+      points:"",
+      stage:""
 
     };
   }
@@ -27,30 +29,33 @@ class  LoginView extends React.Component {
         alert("Please insert info!")
     }
     else{
-        const url = `http://localhost:44321/api/Users_LM/`
-        fetch(url)
-        .then(response => response.json())
-        .then(res => {
-          console.log('res=', res);
-            res.forEach((item) => {
-              if (item.UserName===name && item.UserPass===pass )
-              {
-                this.props.navigation.navigate('MyPageView',{UserId:item.UserId})
-               
-              }
-             
-            });
-        
-        });
-       
-
-    (error) => {
-      alert("noooo "+error)
-      console.log("err post=", error);
+      const url =  `http://192.168.0.107:51342/api/Users/`
+      fetch(url  , {
+        method: "Get",
+        body: JSON.stringify({
+          NoteId: this.props.route.params.NoteId,
+          NoteTitle: this.state.title,
+        }),
+        headers: new Headers({
+          "Content-type": "application/json; charset=UTF-8", //very important to add the 'charset=UTF-8'!!!!
+        }),
+      })
+        .then((res) => {
+          if (item.UserName===name && item.UserPass===pass )
+          {
+            this.props.navigation.navigate('MyPageView',{UserId:item.UserId})
+            return res.json();
+          }
+         },
+          (error) => {
+            console.warn("err post=", error);
+          }
+        );
     };
+        
 
     }
-  }
+  
 
 
   render()

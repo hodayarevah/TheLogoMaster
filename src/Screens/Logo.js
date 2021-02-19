@@ -10,22 +10,10 @@ const Logo = (props) =>{
     return (
 
 
-            <View style={styles.user}>
-                  
+            
+                  <TextInput  style={style=styles.box}  maxLength={1} nChangeText={text => onChangeText(text)}  value={value} />
 
-                  <Image style={styles.imgcard} source={{uri:Note.NoteImage}} />
-          
-                 
-              
-                  <Text style={styles.notecomments}>{Note.NoteText} </Text>
-                  <TextInput
-      style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-      onChangeText={text => onChangeText(text)}
-      value={value}
-    />
 
-                  <Icon raised name='delete'  onPress={()=>ClickEvent(Note)}/>
-            </View>
       
    
   );

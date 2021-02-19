@@ -9,7 +9,7 @@ class MyPageView extends Component {
       super(props);
       this.state = {
          points:0,
-         stage:0,
+         stage:1,
          id:0,
          UserName: "hodaya"
       };
@@ -44,8 +44,8 @@ class MyPageView extends Component {
             <Image style={styles.ava} rounded size="large" source={{  uri:  'https://assets.brandfetch.io/f946b65b538b491.png', }}/>
             <Text style={styles.notetitle} > Hello {this.state.UserName} </Text>
             </View>
-            <Text  style={styles.proftext}  > points  {this.state.points} </Text>
-            <Text  style={styles.proftext}  > stage  {this.state.stage} </Text>
+            <Text  style={styles.proftext}  > points : {this.state.points} </Text>
+            <Text  style={styles.proftext}  > stage : {this.state.stage} </Text>
            <Button  style={styles.butn}  onPress={() =>this.props.navigation.navigate('gameView',{id:this.state.id,points:this.state.points,stage:this.state.stage})}>
            <Text style={styles.words} > let's Go </Text>
              </Button>

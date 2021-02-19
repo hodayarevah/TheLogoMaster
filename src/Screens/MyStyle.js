@@ -25,6 +25,13 @@ import {StyleSheet} from 'react-native';
     paddingTop:"10%",
 
   },
+  box:{
+    height: 3, 
+    width: 2, 
+     borderColor: 'gray',
+     borderWidth: 1 ,
+     backgroundColor:"#B4DAED",
+  },
   king:{
 height: 350, 
 width: 250, 
@@ -149,6 +156,16 @@ proftext:{
   textShadowColor:"#17F1FF",
   textShadowRadius:10,
 
+},
+proftexts:{
+  color: "white",
+  fontSize: 42,
+  fontWeight: "bold",
+  textAlign: "center",
+  marginBottom:'20%',
+  textShadowColor:"#17F1FF",
+  textShadowRadius:10,
+  paddingTop:"10%"
 },
 noteViewtitlex:{
 
