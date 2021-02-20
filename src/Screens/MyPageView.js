@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {SafeAreaView, ScrollView, Text,View ,Image,ImageBackground} from 'react-native';
-import NoteCard from './Logo';
 import styles from "./MyStyle";
 import { Icon,Avatar } from 'react-native-elements';
 import { Button } from 'native-base';

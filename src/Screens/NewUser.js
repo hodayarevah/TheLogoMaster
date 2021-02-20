@@ -71,7 +71,7 @@ else{
     stage:this.state.stage,
     image:this.state.image}})
 
-  const url = `http://192.168.0.107:51342/api/Logo/`
+  const url = `http://192.168.0.106:51342/api/Logo/`
     fetch(url, {
       method: 'Post',
       body: JSON.stringify(this.state.newuser),

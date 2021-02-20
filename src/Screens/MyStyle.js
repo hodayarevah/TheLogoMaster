@@ -26,11 +26,16 @@ import {StyleSheet} from 'react-native';
 
   },
   box:{
-    height: 3, 
-    width: 2, 
+
      borderColor: 'gray',
      borderWidth: 1 ,
      backgroundColor:"#B4DAED",
+     width:5
+ 
+  },
+  rowguss:{
+    alignSelf: 'center',
+
   },
   king:{
 height: 350, 
@@ -39,6 +44,13 @@ alignSelf: 'center',
 marginTop:'55%'
 
   },
+  logoimage:{
+    height: 250, 
+    width: 230, 
+    alignSelf: 'center',
+    marginTop:'5%'
+    
+      },
   butn:{
     color: "#4682b4",
     alignSelf: 'center',

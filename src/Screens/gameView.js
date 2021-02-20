@@ -1,23 +1,21 @@
 import React, { Component } from 'react';
-import {SafeAreaView, ScrollView, Text,View,ImageBackground,Image } from 'react-native';
-import NoteCard from './Logo';
+import {SafeAreaView, Text,View,ImageBackground,Image } from 'react-native';
 import styles from "./MyStyle";
-import { Icon } from 'react-native-elements';
+import {Row, Col} from 'react-native-easy-grid';
 import { Button } from 'native-base';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import Logo from './Logo';
-import CountDown from 'react-native-countdown-component';
+import { Input,Item} from 'native-base';
+//import CountDown from 'react-native-countdown-component';
 class gameView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        level:"",
-        logoimg:"",
-        logoname:"",
+        level:"1",
+        logoimg:"https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-1100x628.jpg",
+        logoname:"nba",
         time :"",
         stagepoints:"",
-        len:[],
-
+        len:["n","b","a"],
+        gusse:[],
 
     };
   
@@ -26,19 +24,6 @@ class gameView extends Component {
 
   async componentDidMount  (){
   
-  const {stage} = this.props.route.params;
-  const url = `http://192.168.0.107:51342/api/Logo/`+ stage+"/"
-  const lego = await fetch(url, {
-     method: 'Get',
-    headers: new Headers({
-      'Content-Type': 'application/json; charset=UTF-8',
-      'Accept': 'application/json; charset=UTF-8'
-    })
-  })
-const res= await lego.json()
-this.setState({logoimg:res.LogoImg,logoname:res.LogoName,len: res.logoname.split("")})
-alert("sucssess")
-console.log(this.state.logoimg);
   }
 
  
@@ -46,7 +31,7 @@ console.log(this.state.logoimg);
  // const {points} = this.props.route.params;
   //const {stage} = this.props.route.params;
 
-}
+
 
  
   render() 
@@ -57,24 +42,19 @@ console.log(this.state.logoimg);
       <ImageBackground source= {require('../backb.png')} style={styles.image}>
    
       <View >
-     <Text style={styles.proftexts} > Stage {stage}</Text>
-     <CountDown
-        until={60 * 1 + 30}
-        size={30}
-        onFinish={() => alert('Finished')}
-        digitStyle={{backgroundColor: '#FFF'}}
-        digitTxtStyle={{color: '#5271ff'}}
-        timeToShow={['M', 'S']}
-        timeLabels={{m: 'M', s: 'S'}}
-      />
+      <Text style={styles.proftexts} > Stage {stage}</Text>
 
-     <Image  source={{uri:this.state.logoimg}}/>  
-     {this.state.len!== null ? this.state.len.map(obj => <Col style={{marginLeft: "5%",maxWidth:"5%"}}><Logo/></Col>) : null}
-         
+     <Image style={style=styles.logoimage} source={{uri:this.state.logoimg}}/>  
+   
       </View>
-
-      
-      <Button rounded style={styles.butnx} onPress={() => this.props.navigation.navigate('newuser')}>
+      <Row>
+      {(this.state.len.length) > 0 ? this.state.len.map(obj => <Col style={{marginLeft: "5%",maxWidth:"5%"}}>
+      <Item  regular>
+      <Input  key={obj} style={style=styles.box} maxLength={1} onChangeText={val=> this.state.gusse.push(val)}/> 
+      </Item >
+      </Col>) : null}
+      </Row>
+      <Button rounded style={styles.butnx}  onPress={() => this.props.navigation.navigate('newuser')}>
             <Text style={styles.words}> </Text>
           
             </Button>
