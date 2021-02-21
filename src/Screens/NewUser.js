@@ -15,8 +15,9 @@ class NewUser extends Component {
       NewUserPass:"",
       VerPass:"",
       points:0,
-      stage:0,
+      stage:1,
       image:"",
+      newuser:"",
       hasCameraPermission: null,
 
     };
@@ -64,16 +65,18 @@ class NewUser extends Component {
     }
 else{
 
+  this.state.newuser={
+     UserName: this.state.NewUserName,
+    UserPass:this.state.NewUserPass,
+    points:this.state.points,
+    UserStage:this.state.stage,
+    Img:this.state.image}
 
-
-  const url = `http://localhost:44321/api/Users_LM/`
+ alert(this.state.newuser);
+  const url = `http://192.168.1.16:55083/api/Users/`
     fetch(url, {
-      method: 'POST',
-      body: JSON.stringify({ UserName: this.state.NewUserName,
-        UserPass:this.state.NewUserPass,
-        points:this.state.points,
-        stage:this.state.stage,
-        image:this.state.image}),
+      method: 'Post',
+      body: JSON.stringify(this.state.newuser),
       headers: new Headers({
         'Content-Type': 'application/json; charset=UTF-8',
         'Accept': 'application/json; charset=UTF-8'

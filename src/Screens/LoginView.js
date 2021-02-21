@@ -19,29 +19,44 @@ class  LoginView extends React.Component {
 
   
   
-  SubmitNote = () =>{
+  SubmitNote = async() =>{
  let  name=this.state.UserName;
  let pass=this.state.UserPass ;
   if((name === '')||(pass === ''))
-  {
+   {
         alert("Please insert info!")
     }
     else{
-        const url = `http://localhost:44321/api/Users_LM/`
-        fetch(url)
-        .then(response => response.json())
-        .then(res => {
-          console.log('res=', res);
-            res.forEach((item) => {
-              if (item.UserName===name && item.UserPass===pass )
-              {
-                this.props.navigation.navigate('MyPageView',{UserId:item.UserId})
-               
-              }
-             
-            });
+    
+      const url = `http://192.168.1.16:55083/api/Users/`
+      const userf = await fetch(url, {
+          method: 'Put',
+          body:   JSON.stringify([name, pass]),
+          headers: new Headers({
+            'Content-Type': 'application/json; charset=UTF-8',
+            'Accept': 'application/json; charset=UTF-8'
+          })
+        })
         
-        });
+        const res= await userf.json()
+          if(res != null)
+            {
+             alert("sucssess")
+             this.props.navigation.navigate('gameView');
+           };
+          
+            
+          //this.props.navigation.navigate('MyPageView',{UserId:item.UserId})
+           // res.forEach((item) => {
+              //if (item.UserName===name && item.UserPass===pass )
+             // {
+             //   this.props.navigation.navigate('MyPageView',{UserId:item.UserId})
+               
+             // }
+             
+           // });
+        
+
        
 
     (error) => {
@@ -76,7 +91,7 @@ class  LoginView extends React.Component {
 
 <Input placeholder="Password" secureTextEntry={true}   onChangeText={InputTitle=> this.setState({UserPass: InputTitle})}/>
 
-          <Button rounded style={styles.butn} onPress ={() =>this.props.navigation.navigate('gameView')}>
+          <Button rounded style={styles.butn} onPress ={this.SubmitNote}>
         
                <Text style={styles.words}>Log in</Text>
               </Button>
@@ -91,8 +106,11 @@ class  LoginView extends React.Component {
           </Button>
     </ImageBackground>
    );
- }
   }
+}
+
+  
 
   
 export default LoginView;
+  
