@@ -10,8 +10,8 @@ class  LoginView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      UserName:"",
-      UserPass:"",
+      UserName:"hodaya",
+      UserPass:"revah",
       UserId:"",
 
     };
@@ -39,9 +39,8 @@ class  LoginView extends React.Component {
         })
         
         const res= await userf.json()
-          if(res != null)
+          if(res.UserName != null)
             {
-             alert("sucssess")
              this.props.navigation.navigate('gameView');
            };
           

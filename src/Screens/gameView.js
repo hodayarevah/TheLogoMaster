@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import {SafeAreaView, Text,View,ImageBackground,Image } from 'react-native';
+import {SafeAreaView, Text,View,ImageBackground,Image,ScrollView } from 'react-native';
 import styles from "./MyStyle";
 import {Row, Col} from 'react-native-easy-grid';
 import { Button } from 'native-base';
+import CountDown from 'react-native-countdown-component';
 //import { Input,Item} from 'native-base';
 //import CountDown from 'react-native-countdown-component';
-import CharacterInput from 'react-native-character-input'
+import CharacterInput from 'react-native-character-input';
 class gameView extends Component {
   constructor(props) {
     super(props);
@@ -15,10 +16,20 @@ class gameView extends Component {
         logoname:"",
         time :"",
         stagepoints:"",
-        len:[],
-        gusse:[],
+        len:["n","b","a"],
+        guess:[],
+        timer: 180
 
     };
+
+    const internal = setInterval(() => {
+      if (this.state.timer <= 0) {
+        clearInterval(interval)
+        alert('Finished!')
+      } else {
+        this.setState({timer: this.state.timer - 1})
+      }
+    }, 1000)
   
   }
 
@@ -57,20 +68,22 @@ class gameView extends Component {
   
   
     return (
+      <ScrollView >
+
       <ImageBackground source= {require('../backb.png')} style={styles.image}>
    
       <View >
-      <Text style={styles.proftexts} > Stage {this.state.level}</Text>
+      <Text style={styles.proftexts} > Stage {this.state.level} {this.state.timer}</Text>
 
      <Image style={style=styles.logoimage} source={{uri:this.state.logoimg}}/>  
-   
+     
       </View>
       <Row  style={style=styles.rowguss}>
      
       <CharacterInput
-	placeHolder='__'
-	showCharBinary='11'
-	handleChange={(value) =>alert(value)}
+	placeHolder={Array(this.state.len.length).fill('_').join('')}
+	showCharBinary={Array(this.state.len.length).fill('1').join('')}
+	handleChange={(guess) => { this.setState({guess}) }}
 	inputType='contained'
 	keyboardType='default'
 />
@@ -81,6 +94,7 @@ class gameView extends Component {
           
             </Button>
       </ImageBackground>
+      </ScrollView>
     );
   }
 }

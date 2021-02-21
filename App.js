@@ -11,8 +11,9 @@ import LoginView from './src/Screens/LoginView'
 import gameView from './src/Screens/gameView';
 import mypro from "./src/Screens/MyPageView"
 import NewUser from './src/Screens/NewUser';
-
-
+import { I18nManager } from "react-native";
+I18nManager.forceRTL(false);
+I18nManager.allowRTL(false);
 export default class App extends React.Component {
   constructor(props) {
     super(props);

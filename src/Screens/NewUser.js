@@ -83,7 +83,6 @@ else{
       })
     })
     .then((res) => {
-     alert("sucssess")
       return res.json(); 
     }),
     (error) => {
