@@ -4,7 +4,7 @@ import {StyleSheet} from 'react-native';
  export default styles = StyleSheet.create({
 
   btnadd:{
-    color: '#5271ff',  
+    color: "#4682b4",  
    fontSize: 12, 
    fontWeight: '700',
       
@@ -25,6 +25,29 @@ import {StyleSheet} from 'react-native';
     paddingTop:"10%",
 
   },
+  box:{
+
+     borderColor: 'gray',
+     borderWidth: 1 ,
+     backgroundColor:"#B4DAED",
+     paddingRight:15,
+    paddingRight:5,
+     color:'black'
+ 
+
+ 
+  },
+  boxx:{
+
+    paddingRight:5
+
+
+
+ },
+  rowguss:{
+    alignSelf: 'center',
+
+  },
   king:{
 height: 350, 
 width: 250, 
@@ -32,8 +55,15 @@ alignSelf: 'center',
 marginTop:'55%'
 
   },
+  logoimage:{
+    height: 250, 
+    width: 230, 
+    alignSelf: 'center',
+    marginTop:'5%'
+    
+      },
   butn:{
-    color: "#5271ff",
+    color: "#4682b4",
     alignSelf: 'center',
     borderColor:"#f632f4",
     borderRadius: 100,
@@ -42,11 +72,11 @@ marginTop:'55%'
   },
   butnx:{
     marginTop:'20%',
-    color: "#5271ff",
+    color: "#4682b4",
     alignSelf: 'center',
   },
  buttadd:{
-  color: '#5271ff'
+  color:  "#4682b4"
    
  },
  login:{
@@ -122,9 +152,14 @@ add:{
 notetitle:{
 
   color: "white",
-  fontSize: 32,
+  fontSize: 42,
   fontWeight: "bold",
   textAlign: "center",
+  marginBottom:'20%',
+  textShadowColor:"#f632f4",
+  textShadowRadius:10,
+ 
+  //borderColor:"#f632f4",
 
  
 },
@@ -135,16 +170,44 @@ noteViewtitle:{
   paddingTop:'20%'
 
 },
+proftext:{
+  color: "white",
+  fontSize: 42,
+  fontWeight: "bold",
+  textAlign: "center",
+  marginBottom:'20%',
+  textShadowColor:"#17F1FF",
+  textShadowRadius:10,
+
+},
+proftexts:{
+  color: "white",
+  fontSize: 42,
+  fontWeight: "bold",
+  textAlign: "center",
+  marginBottom:'20%',
+  textShadowColor:"#17F1FF",
+  textShadowRadius:10,
+  paddingTop:"10%"
+},
 noteViewtitlex:{
 
   textAlign: "center",
-  backgroundColor: "#4682b4",
-  paddingTop:'45%'
+  backgroundColor: '#5271ff',
+  paddingTop:'20%',
+  borderBottomEndRadius: 75,
+  borderBottomLeftRadius: 75,
 
 },
 ava:{
 
-
+  width: 150,
+    height: 150,
+    borderColor: "#17F1FF",
+    borderWidth: 2,
+    borderRadius: 75,
+    marginLeft:'30%',
+    marginBottom:'5%'
 },
 
 iconaddnote:{

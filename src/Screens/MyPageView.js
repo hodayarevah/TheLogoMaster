@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import {SafeAreaView, ScrollView, Text,View ,ImageBackground} from 'react-native';
-import NoteCard from './Logo';
+import {SafeAreaView, ScrollView, Text,View ,Image,ImageBackground} from 'react-native';
 import styles from "./MyStyle";
 import { Icon,Avatar } from 'react-native-elements';
 import { Button } from 'native-base';
@@ -9,7 +8,7 @@ class MyPageView extends Component {
       super(props);
       this.state = {
          points:0,
-         stage:0,
+         stage:1,
          id:0,
          UserName: "hodaya"
       };
@@ -41,13 +40,13 @@ class MyPageView extends Component {
 
             <View style={styles.noteViewtitlex}>
 
-            <Avatar style={styles.ava} rounded size="large" source={{  uri:  'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg', }}/>
+            <Image style={styles.ava} rounded size="large" source={{  uri:  'https://assets.brandfetch.io/f946b65b538b491.png', }}/>
             <Text style={styles.notetitle} > Hello {this.state.UserName} </Text>
             </View>
-            <Text  > points  {this.state.points} </Text>
-            <Text  > stage  {this.state.stage} </Text>
-           <Button rounded style={styles.butn}  onPress={() =>this.props.navigation.navigate('gameView',{id:this.state.id,points:this.state.points,stage:this.state.stage})}>
-           <Text  > let's Go  {this.state.stage} </Text>
+            <Text  style={styles.proftext}  > points : {this.state.points} </Text>
+            <Text  style={styles.proftext}  > stage : {this.state.stage} </Text>
+           <Button  style={styles.butn}  onPress={() =>this.props.navigation.navigate('gameView',{id:this.state.id,points:this.state.points,stage:this.state.stage})}>
+           <Text style={styles.words} > let's Go </Text>
              </Button>
 
 </ScrollView>

@@ -8,15 +8,56 @@ class HomeView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      logolist:["apple"],
-      name:[{LogoName:"apple",LogoImg:"https://help.apple.com/assets/5C2D31DA0946224012A6B385/5C2D345D0946227F55A6AEB2/en_US/0eb401f9019e0c90e1b7e49a38052daf.png"}],
+      logolist:[],
+      name:[],
       logo:"",
     };
   }
 
-  letsgo=()=>{
-  const url = `http://192.168.0.107:51342/api/Logo/`
-  let data=this.state.name
+  letsgo=async ()=>{
+    
+    const promi=this.state.name.map(element => {
+
+      var myHeaders = new Headers();
+  myHeaders.append("x-api-key", "Ak26dTKXRM82dP3iS5Jq796Ncd3At98G6IzS7X8z");
+  myHeaders.append("Content-Type", "application/json");
+  
+  var raw = JSON.stringify({"domain":"www."+element+".com"});
+  
+  var requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: raw,
+    redirect: 'follow'
+  };
+  
+  return fetch("https://api.brandfetch.io/v1/logo", requestOptions)
+   .then((response) => response.json())
+   .then((result) => {
+     console.log(result.response)
+      this.setState({logo:
+        {LogoName:element,
+        LogoImg:result.response.icon.image,
+      }
+      })
+      this.state.logolist.push(this.state.logo)
+      })
+      
+    
+    .catch(error => console.log('error', error));
+        
+      });
+  
+   
+   
+      await Promise.all(promi);
+      console.log(this.state.logolist);
+      this.postdata();
+        }
+  
+    postdata=()=>{
+  const url = `http://192.168.0.106:51342/api/Logo/`
+  let data=this.state.logolist
   fetch(url, {
     method: 'Post',
     body: JSON.stringify(data),
@@ -36,6 +77,7 @@ class HomeView extends Component {
   
   
 }
+
   render() {
     return (  
 
