@@ -30,9 +30,20 @@ import {StyleSheet} from 'react-native';
      borderColor: 'gray',
      borderWidth: 1 ,
      backgroundColor:"#B4DAED",
-     width:5
+     paddingRight:15,
+    paddingRight:5,
+     color:'black'
+ 
+
  
   },
+  boxx:{
+
+    paddingRight:5
+
+
+
+ },
   rowguss:{
     alignSelf: 'center',
 

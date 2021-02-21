@@ -3,8 +3,9 @@ import {SafeAreaView, Text,View,ImageBackground,Image } from 'react-native';
 import styles from "./MyStyle";
 import {Row, Col} from 'react-native-easy-grid';
 import { Button } from 'native-base';
-import { Input,Item} from 'native-base';
+//import { Input,Item} from 'native-base';
 //import CountDown from 'react-native-countdown-component';
+import CharacterInput from 'react-native-character-input'
 class gameView extends Component {
   constructor(props) {
     super(props);
@@ -47,12 +48,16 @@ class gameView extends Component {
      <Image style={style=styles.logoimage} source={{uri:this.state.logoimg}}/>  
    
       </View>
-      <Row>
-      {(this.state.len.length) > 0 ? this.state.len.map(obj => <Col style={{marginLeft: "5%",maxWidth:"5%"}}>
-      <Item  regular>
-      <Input  key={obj} style={style=styles.box} maxLength={1} onChangeText={val=> this.state.gusse.push(val)}/> 
-      </Item >
-      </Col>) : null}
+      <Row  style={style=styles.rowguss}>
+     
+      <CharacterInput
+	placeHolder='__'
+	showCharBinary='11'
+	handleChange={(value) =>alert(value)}
+	inputType='contained'
+	keyboardType='default'
+/>
+
       </Row>
       <Button rounded style={styles.butnx}  onPress={() => this.props.navigation.navigate('newuser')}>
             <Text style={styles.words}> </Text>
