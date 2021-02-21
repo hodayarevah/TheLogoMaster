@@ -56,7 +56,7 @@ class HomeView extends Component {
         }
   
     postdata=()=>{
-  const url = `http://192.168.0.106:51342/api/Logo/`
+  const url = `http://192.168.1.101:51342/api/Logo/`
   let data=this.state.logolist
   fetch(url, {
     method: 'Post',
