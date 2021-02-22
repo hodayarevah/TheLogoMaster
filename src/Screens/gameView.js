@@ -10,12 +10,12 @@ class gameView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        level:"1",
+        level:"",
         logoimg:"https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-1100x628.jpg",
-        logoname:"nba",
+        logoname:"",
         time :"",
         stagepoints:"",
-        len:["n","b","a"],
+        len:[],
         gusse:[],
 
     };
@@ -24,6 +24,23 @@ class gameView extends Component {
 
 
   async componentDidMount  (){
+    
+    const {stage} = this.props.route.params;
+    this.setState({level:stage})
+    const url = `http://192.168.1.101:51342/api/Logo/`
+    const lego = await fetch(url, {
+       method: 'Put',
+       body: JSON.stringify(stage),
+      headers: new Headers({
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Accept': 'application/json; charset=UTF-8'
+      })
+    })
+  const res= await lego.json()
+  console.log(res);
+   this.setState({logoimg:res.LogoImg,logoname:res.LogoName,len: res.logoname.split("")})
+  alert("sucssess")
+  console.log(this.state.logoimg);
   
   }
 
@@ -38,12 +55,12 @@ class gameView extends Component {
   render() 
   {
   
-    const {stage} = this.props.route.params;
+  
     return (
       <ImageBackground source= {require('../backb.png')} style={styles.image}>
    
       <View >
-      <Text style={styles.proftexts} > Stage {stage}</Text>
+      <Text style={styles.proftexts} > Stage {this.state.level}</Text>
 
      <Image style={style=styles.logoimage} source={{uri:this.state.logoimg}}/>  
    

@@ -32,10 +32,9 @@ import {StyleSheet} from 'react-native';
      backgroundColor:"#B4DAED",
      paddingRight:15,
     paddingRight:5,
-     color:'black'
- 
-
- 
+     color:'black',
+    
+  
   },
   boxx:{
 

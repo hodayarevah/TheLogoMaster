@@ -28,7 +28,7 @@ class  LoginView extends React.Component {
     }
     else{
     
-      const url = `http://192.168.1.16:55083/api/Users/`
+      const url = `http://192.168.1.101:51342/api/Users/`
       const userf = await fetch(url, {
           method: 'Put',
           body:   JSON.stringify([name, pass]),
@@ -50,7 +50,7 @@ class  LoginView extends React.Component {
            // res.forEach((item) => {
               //if (item.UserName===name && item.UserPass===pass )
              // {
-             //   this.props.navigation.navigate('MyPageView',{UserId:item.UserId})
+             // 
                
              // }
              
@@ -58,11 +58,6 @@ class  LoginView extends React.Component {
         
 
        
-
-    (error) => {
-      alert("noooo "+error)
-      console.log("err post=", error);
-    };
 
     }
   }
