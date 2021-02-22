@@ -6,6 +6,7 @@ import { Button } from 'native-base';
 import CountDown from 'react-native-countdown-component';
 //import { Input,Item} from 'native-base';
 //import CountDown from 'react-native-countdown-component';
+
 import CharacterInput from 'react-native-character-input';
 class gameView extends Component {
   constructor(props) {
@@ -24,6 +25,7 @@ class gameView extends Component {
     };
 
     const internal = setInterval(() => {
+ 
       if (this.state.timer <= 0 ) {
         clearInterval(internal)
       const {id} = this.props.route.params;
@@ -43,6 +45,8 @@ class gameView extends Component {
     }, 1000)
   
   }
+
+ 
 
  
   postdata=async()=>{
@@ -66,6 +70,11 @@ class gameView extends Component {
   async componentDidMount  (){
     
     const {stage} = this.props.route.params;
+    if(stage>=30)
+    {
+      this.props.navigation.navigate('endgame')
+    }
+    else{
     this.setState({level:stage})
     const url = `http://192.168.0.105:51342/api/Logo?numStage=`+stage
     const lego = await fetch(url, {
@@ -81,7 +90,7 @@ class gameView extends Component {
   console.log(this.state.len);
   
   }
-
+  }
  
  // const {id} = this.props.route.params;
  // const {points} = this.props.route.params;
@@ -106,8 +115,13 @@ class gameView extends Component {
      
       </View>
       <Row  style={style=styles.rowguss}>
-     
-
+      <CharacterInput
+  placeHolder={Array(this.state.len.length).fill('_').join('')}
+  showCharBinary={Array(this.state.len.length).fill('1').join('')}
+  handleChange={(guess) => { this.setState({guess}) }}
+  inputType='contained'
+  keyboardType='default'
+/>
 
       </Row>
       <Button rounded style={styles.butnx}  onPress={() => this.props.navigation.navigate('newuser')}>
