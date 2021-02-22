@@ -10,24 +10,23 @@ class MyPageView extends Component {
          points:0,
          stage:1,
          id:0,
-         UserName: "hodaya"
+         UserNameU: "",
+         img:""
+         
       };
     }
-  componentDidMount(){
-    //const UserName = this.props.route.params;
-    //const url = `http://localhost:44321/api/Users_LM/`
-   // fetch(url)
-   // .then(response => response.json())
-    //.then(res => {
-     // console.log('res=', res);
-       
-    //});
    
-
-//(error) => {
-  //alert("noooo "+error)
- // console.log("err post=", error);
-//};
+  componentDidMount(){
+    const {UserId}=this.props.route.params;
+    this.setState({id:UserId})
+    const{UserName}=this.props.route.params;
+    this.setState({UserNameU:UserName})
+    const {pointsU}=this.props.route.params;
+    this.setState({points:pointsU})
+    const{stageU}=this.props.route.params;
+    this.setState({stage:stageU})
+    const{imgU}=this.props.route.params;
+    this.setState({img:imgU})
 
 }
   
@@ -41,7 +40,7 @@ class MyPageView extends Component {
             <View style={styles.noteViewtitlex}>
 
             <Image style={styles.ava} rounded size="large" source={{  uri:  'https://assets.brandfetch.io/f946b65b538b491.png', }}/>
-            <Text style={styles.notetitle} > Hello {this.state.UserName} </Text>
+            <Text style={styles.notetitle} > Hello {this.state.UserNameU} </Text>
             </View>
             <Text  style={styles.proftext}  > points : {this.state.points} </Text>
             <Text  style={styles.proftext}  > stage : {this.state.stage} </Text>
