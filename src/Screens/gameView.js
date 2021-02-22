@@ -6,7 +6,7 @@ import { Button } from 'native-base';
 import CountDown from 'react-native-countdown-component';
 //import { Input,Item} from 'native-base';
 //import CountDown from 'react-native-countdown-component';
-
+import { DrawerActions } from '@react-navigation/native';
 import CharacterInput from 'react-native-character-input';
 class gameView extends Component {
   constructor(props) {
@@ -21,51 +21,18 @@ class gameView extends Component {
         guess:[],
         timer: 10,
 
-
+    }
     };
 
-    const internal = setInterval(() => {
- 
-      if (this.state.timer <= 0 ) {
-        clearInterval(internal)
-      const {id} = this.props.route.params;
-      const {points} = this.props.route.params;
-      const {stage} = this.props.route.params;
-      let newscore=stage+1
-      this.state.userupd={
-        Id:id,
-       Points:points,
-       UserStage:newscore,
-      }
-        alert('Finished!')
-        this.postdata()
-      } else {
-        this.setState({timer: this.state.timer - 1})
-        if(this.state.guess==this.state.logoname)
-        {
-          const {id} = this.props.route.params;
-          const {points} = this.props.route.params;
-          const {stage} = this.props.route.params;
-          let newscore=stage+1
-          let newpoint=points+this.state.timer+10;
-          this.state.userupd={
-            Id:id,
-           Points:newpoint,
-           UserStage:newscore,
-          }
-          this.postdata()
-        }
-      }
-    }, 1000)
+   
   
-  }
 
  
 
  
   postdata=async()=>{
     
-
+    const jumpToAction = DrawerActions.jumpTo('Profile', { name: 'Satya' });
     const url = 'http://192.168.0.105:51342/api/Users/'
    const userdata= await fetch(url, {
       method: 'Delete',
@@ -76,7 +43,7 @@ class gameView extends Component {
       })
     })
     alert('level up!')
-    this.props.navigation.navigate('gameView',{id:this.state.userupd.Id,points:this.state.userupd.Points,stage:this.state.userupd.UserStage})
+    this.props.navigation.replace('gameView',{id:this.state.userupd.Id,points:this.state.userupd.Points,stage:this.state.userupd.UserStage})
  
     }
 
@@ -100,8 +67,43 @@ class gameView extends Component {
     })
   const res= await lego.json()
   console.log(res);
-   this.setState({logoimg:res.LogoImg,logoname:res.LogoName,len:res.LogoName.split("")})
-  console.log(this.state.len);
+  let fobo=res.LogoName.split("")
+   this.setState({logoimg:res.LogoImg,logoname:res.LogoName})
+   this.setState({len:fobo})
+   const internal = setInterval(() => {
+ 
+    if (this.state.timer <= 0 ) {
+      clearInterval(internal)
+    const {id} = this.props.route.params;
+    const {points} = this.props.route.params;
+    const {stage} = this.props.route.params;
+    let newscore=stage+1
+    this.state.userupd={
+      Id:id,
+     Points:points,
+     UserStage:newscore,
+    }
+      this.postdata()
+    } 
+    else {
+      this.setState({timer: this.state.timer - 1})
+      if(this.state.guess==this.state.logoname)
+      {
+        const {id} = this.props.route.params;
+        const {points} = this.props.route.params;
+        const {stage} = this.props.route.params;
+        let newscore=stage+1
+        let newpoint=points+this.state.timer+10;
+        this.state.userupd={
+          Id:id,
+         Points:newpoint,
+         UserStage:newscore,
+        }
+        this.postdata()
+      }
+    }
+  }, 1000)
+
   
   }
   }
