@@ -41,6 +41,20 @@ class gameView extends Component {
         this.postdata()
       } else {
         this.setState({timer: this.state.timer - 1})
+        if(this.state.guess==this.state.logoname)
+        {
+          const {id} = this.props.route.params;
+          const {points} = this.props.route.params;
+          const {stage} = this.props.route.params;
+          let newscore=stage+1
+          let newpoint=points+this.state.timer+10;
+          this.state.userupd={
+            Id:id,
+           Points:newpoint,
+           UserStage:newscore,
+          }
+          this.postdata()
+        }
       }
     }, 1000)
   
