@@ -5,7 +5,7 @@ import {Row, Col} from 'react-native-easy-grid';
 import { Button } from 'native-base';
 //import { Input,Item} from 'native-base';
 //import CountDown from 'react-native-countdown-component';
-import CharacterInput from 'react-native-character-input'
+//import CharacterInput from 'react-native-character-input';
 class gameView extends Component {
   constructor(props) {
     super(props);

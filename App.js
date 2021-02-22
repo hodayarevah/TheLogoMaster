@@ -11,6 +11,7 @@ import LoginView from './src/Screens/LoginView'
 import gameView from './src/Screens/gameView';
 import mypro from "./src/Screens/MyPageView"
 import NewUser from './src/Screens/NewUser';
+import WinnerPage from './src/Screens/WinnerPage';
 
 
 export default class App extends React.Component {
@@ -36,12 +37,13 @@ export default class App extends React.Component {
     }
     return (
       <NavigationContainer>
-       <Drawer.Navigator  initialRouteName='Home'>
+       <Drawer.Navigator  initialRouteName='winners'>
        <Drawer.Screen name="Home" component={HomeView}  />
        <Drawer.Screen name="login" component={LoginView} />
        <Drawer.Screen name="gameView" component={gameView} />
        <Drawer.Screen name="mypro" component={mypro} />
        <Drawer.Screen name="newuser" component={NewUser} />
+       <Drawer.Screen name="winners" component={WinnerPage} />
          </Drawer.Navigator >
       </NavigationContainer>
     );
