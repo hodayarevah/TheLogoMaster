@@ -165,6 +165,7 @@ class gameView extends Component {
      
       </View>
       <Row  style={style=styles.rowguss}>
+     
       <CharacterInput
   placeHolder={Array(this.state.len.length).fill('_').join('')}
   showCharBinary={Array(this.state.len.length).fill('1').join('')}

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { StyleSheet, View,ScrollView  } from 'react-native';
 import { Table,TableWrapper, Row, Rows } from 'react-native-table-component';
- 
+import {ImageBackground } from 'react-native';
+
+import styles from "./MyStyle";
 export default class WinnerPage extends Component {
   constructor(props) {
     super(props);
@@ -9,14 +11,14 @@ export default class WinnerPage extends Component {
     //  UserName:"",
     //  UserStage:"",
      // UserPoints:"",
-      data: [],
+     tableData: [],
     }
   }
 
 
   async componentDidMount() {
 
-    const url = `http://192.168.1.16:55083/api/Users/`
+    const url = `http://192.168.0.105:51342/api/Users/`
     const userf =await fetch(url, {
         method: 'Get',
         headers: new Headers({
@@ -26,62 +28,40 @@ export default class WinnerPage extends Component {
       })
       
    const res=await userf.json()
-
+    let i=0;
+    const Data = [];
         if(res != null)
           {
            alert("sucssess")
-           let players = res.map(player => {
-          return 
-           {
-            [
-              player.UserName,
-              player.Points,
-              player.UserStage 
-           ]
-          }
-          
-      });
-
-        this.setState({data: players} );
-      
+           let rowData = [];
+          res.forEach(element => {
+              i++;
+              rowData.push([i],[element.UserName],[element.Points], [element.UserStage]);
+              Data.push(rowData);
+              rowData = []
+              
+            });
+            
+    this.setState({tableData: Data} );
+        }
+    
       };
-     
-
-  (error) => {
-    alert("noooo "+error)
-    console.log("err post=", error);
-  };
-
-  }
 
  
   render() {
     const state = this.state;
-    tableHead= ['name', 'Points', 'UserStage'];
+    tableHead= ['place','name', 'Points', 'UserStage'];
     const widthArr = [70, 60, 30, 50, 40, 40, 40];
     return (
-      <View style={styles.container}>
-         <ScrollView horizontal={true}>
-         <View>
+      <ImageBackground source= {require('../backh.png')} style={styles.image}>
+      <View style={styles.containerh}>
         <Table borderStyle={{borderWidth: 2, borderColor: '#c8e1ff'}}>
-          <Row data={state.tableHead} widthArr={widthArr} style={styles.head} textStyle={styles.text}/>
+          <Row data={state.tableHead} style={styles.headh} textStyle={styles.texth}/>
+          <Rows data={state.tableData} textStyle={styles.texth}/>
         </Table>
-        <ScrollView style={styles.dataWrapper}>
-              <Table borderStyle={{borderColor: '#C1C0B9'}}>
-                  <Rows data={state.data} flexArr={[1, 2, 1, 1]} widthArr={widthArr} style={styles.head}
-                      textStyle={styles.text}/>
-             </Table>
-      </ScrollView>
-        </View>
-        </ScrollView>
+
       </View>
+      </ImageBackground>
     )
   }
 }
- 
-const styles = StyleSheet.create({
-  container: { flex: 1, padding: 16, paddingTop: 30, backgroundColor: '#fff' },
-  head: { height: 40, backgroundColor: '#f1f8ff' },
-  text: { margin: 6 },
-  dataWrapper: { marginTop: -1 }
-});
