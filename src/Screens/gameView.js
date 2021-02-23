@@ -15,7 +15,7 @@ class gameView extends Component {
     this.state = {
         level:"",
         logoimg:"/02/322868_1100-1100x628.jpg",
-        logoname:"",
+        logoname:"n",
         userupd :[],
         stagepoints:"",
         len:["n","b","a"],
@@ -30,42 +30,6 @@ class gameView extends Component {
    
 
 
-   const internal = setInterval(() => {
- 
-      if (this.state.timer <= 0 ) {
-        clearInterval(internal)
-      const {id} = this.props.route.params;
-      const {points} = this.props.route.params;
-      const {stage} = this.props.route.params;
-
-      let newscore=stage+1
-      this.state.userupd={
-        Id:id,
-       Points:points,
-       UserStage:newscore,
-      }
-        this.postdata()
-      } 
-      else {
-        this.setState({timer: this.state.timer - 1})
-        if(this.state.guess==this.state.logoname)
-        {
-          const {id} = this.props.route.params;
-          const {points} = this.props.route.params;
-          const {stage} = this.props.route.params;
-          let newscore=stage+1
-          let newpoint=points+this.state.timer+10;
-          this.state.userupd={
-            Id:id,
-           Points:newpoint,
-           UserStage:newscore,
-          }
-  
-          
-          this.postdata()
-        }
-      }
-    }, 1000)
   
 
   };
@@ -84,11 +48,10 @@ class gameView extends Component {
 
     this.props.navigation.navigate('nextlevel',{id:this.state.userupd.Id,points:this.state.userupd.Points,stage:this.state.userupd.UserStage,UserName:this.state.UserName,img:this.state.img});
     console.log(this.state.userupd.Id,this.state.userupd.Points,this.state.userupd.UserStage,this.state.UserName,this.state.img)
-
+    this.setState({timer:10})
   }
 
-
-  async componentDidMount  (){
+  getdata=async()=>{
     
     const {stage} = this.props.route.params;
     const {UserName} = this.props.route.params;
@@ -101,7 +64,7 @@ class gameView extends Component {
     else{
     this.setState({level:stage})
     const url = `http://192.168.0.105:51342/api/Logo?numStage=`+stage
-    const lego = await fetch(url, {
+    const lego =await  fetch(url, {
        method:'Get',
       headers: new Headers({
         'Content-Type': 'application/json; charset=UTF-8',
@@ -110,14 +73,59 @@ class gameView extends Component {
     })
   const res= await lego.json()
   console.log(res);
-  let fobo=res.LogoName.split("")
    this.setState({logoimg:res.LogoImg,logoname:res.LogoName})
+   let fobo=this.state.logoname.split("")
    this.setState({len:fobo})
 
    
+   const internal = setInterval(() => {
+ 
+    if (this.state.timer <= 0 ) {
+      clearInterval(internal)
+    const {id} = this.props.route.params;
+    const {points} = this.props.route.params;
+    const {stage} = this.props.route.params;
+
+    let newscore=stage+1
+    this.state.userupd={
+      Id:id,
+     Points:points,
+     UserStage:newscore,
+    }
+      this.postdata()
+    } 
+    else {
+      this.setState({timer: this.state.timer - 1})
+      if(this.state.guess==this.state.logoname)
+      {
+        const {id} = this.props.route.params;
+        const {points} = this.props.route.params;
+        const {stage} = this.props.route.params;
+        let newscore=stage+1
+        let newpoint=points+this.state.timer+10;
+        this.state.userupd={
+          Id:id,
+         Points:newpoint,
+         UserStage:newscore,
+        }
+
+        
+        this.postdata()
+      }
+    }
+  }, 1000)
 
   
   }
+  }
+
+  async componentDidMount  (){
+    await this.getdata()
+    this._unsubscribeFocus  = await this.props.navigation.addListener('focus',(payload) =>{
+    this.getdata()
+
+  
+});
   }
  
 

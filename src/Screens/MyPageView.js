@@ -15,8 +15,17 @@ class MyPageView extends Component {
          
       };
     }
+    async componentDidMount  (){
+      await this.getdata()
+      this._unsubscribeFocus  = await this.props.navigation.addListener('focus',(payload) =>{
+      this.getdata()
+  
+    
+  });
+    }
    
-  componentDidMount(){
+    getdata=async()=>{
+    
     const {UserId}=this.props.route.params;
     this.setState({id:UserId})
     const{UserName}=this.props.route.params;

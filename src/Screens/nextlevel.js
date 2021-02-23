@@ -7,10 +7,37 @@ class nextlevel extends Component {
     constructor(props) {
       super(props);
       this.state = {
-         id:0,
-         
+        id:"",
+       points:"",
+       stage:"",
+       UserName:"",
+       img:""
+}
+        
       };
-    }
+      async  componentDidMount(){
+            await this.getdata()
+            this._unsubscribeFocus  = await this.props.navigation.addListener('focus',(payload) =>{
+            this.getdata()
+        
+          
+        });
+          }
+          getdata()
+          {
+        const {id} = this.props.route.params;
+        const {points} = this.props.route.params;
+        const {stage} = this.props.route.params;
+        const {UserName} = this.props.route.params;
+        const {img} = this.props.route.params;
+        this.setState({id:id,points:points,stage:stage,UserName:UserName,img:img})
+      }
+  
+    //this.state.userupd.Id,
+    //  this.state.userupd.Points,
+   // this.state.userupd.UserStage
+   // this.state.UserName
+   // img:this.state.img
 render() {
     return (  
 
@@ -21,12 +48,12 @@ render() {
        
        <View style={styles.butnext}>
 
-        <Button rounded style={styles.butn} onPress={() =>this.props.navigation.navigate('gameView',{id:this.props.id,points:this.props.points,stage:this.props.stage,UserName:this.props.UserName,imgU:this.props.img})}
+        <Button rounded style={styles.butn} onPress={() =>this.props.navigation.navigate('gameView',{id:this.state.id,points:this.state.points,stage:this.state.stage,UserName:this.state.UserName,imgU:this.state.img})}
 >
           <Text style={styles.words}>next level</Text>
         
           </Button>
-          <Button rounded style={styles.butn} onPress={() =>this.props.navigation.navigate('mypro',{UserId:this.props.id,pointsU:this.props.points,stageU:this.props.stage,UserName:this.props.UserName,imgU:this.props.img})}>
+          <Button rounded style={styles.butn} onPress={() =>this.props.navigation.navigate('mypro',{UserId:this.state.id,pointsU:this.state.points,stageU:this.state.stage,UserName:this.state.UserName,imgU:this.state.img})}>
 
           <Text style={styles.words}>my profile</Text>
         
