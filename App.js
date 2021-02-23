@@ -39,7 +39,7 @@ export default class App extends React.Component {
     }
     return (
       <NavigationContainer>
-       <Drawer.Navigator  initialRouteName='WinnerPage'>
+       <Drawer.Navigator  initialRouteName='Home'>
        <Drawer.Screen name="Home" component={HomeView}  />
        <Drawer.Screen name="login" component={LoginView} />
        <Drawer.Screen name="gameView" component={gameView} />

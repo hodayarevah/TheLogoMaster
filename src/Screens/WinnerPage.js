@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, View,ScrollView  } from 'react-native';
+import {  View,ScrollView  } from 'react-native';
 import { Table,TableWrapper, Row, Rows } from 'react-native-table-component';
 import {ImageBackground } from 'react-native';
-
 import styles from "./MyStyle";
 export default class WinnerPage extends Component {
   constructor(props) {
@@ -16,7 +15,16 @@ export default class WinnerPage extends Component {
   }
 
 
-  async componentDidMount() {
+  async componentDidMount  (){
+     await this.getdata()
+     this._unsubscribeFocus  = await this.props.navigation.addListener('focus',(payload) =>{
+
+     this.getdata()
+ 
+   
+ });
+   }
+   getdata=async()=>{
 
     const url = `http://192.168.0.105:51342/api/Users/`
     const userf =await fetch(url, {
@@ -28,15 +36,16 @@ export default class WinnerPage extends Component {
       })
       
    const res=await userf.json()
+  // [[1],[2],[3],[4]]
     let i=0;
     const Data = [];
         if(res != null)
           {
-           alert("sucssess")
            let rowData = [];
           res.forEach(element => {
               i++;
-              rowData.push([i],[element.UserName],[element.Points], [element.UserStage]);
+             // rowData.push(["gj"],["g"],["j"], ["p"]);
+             rowData.push([i],[element.UserName],[element.Points], [element.UserStage]);
               Data.push(rowData);
               rowData = []
               
@@ -54,10 +63,10 @@ export default class WinnerPage extends Component {
     const widthArr = [70, 60, 30, 50, 40, 40, 40];
     return (
       <ImageBackground source= {require('../backh.png')} style={styles.image}>
-      <View style={styles.containerh}>
-        <Table borderStyle={{borderWidth: 2, borderColor: '#c8e1ff'}}>
-          <Row data={state.tableHead} style={styles.headh} textStyle={styles.texth}/>
-          <Rows data={state.tableData} textStyle={styles.texth}/>
+      <View style={styles.container}>
+        <Table borderStyle={{borderWidth: 2, borderColor: '#4682b4'}}>
+          <Row data={tableHead} style={styles.head} textStyle={styles.textx}/>
+          <Rows data={state.tableData} textStyle={styles.textx}/>
         </Table>
 
       </View>
@@ -65,3 +74,4 @@ export default class WinnerPage extends Component {
     )
   }
 }
+ 

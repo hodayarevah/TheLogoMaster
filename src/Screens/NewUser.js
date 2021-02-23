@@ -72,7 +72,7 @@ else{
     UserStage:this.state.stage,
     Img:this.state.image}
 
- alert(this.state.newuser);
+ 
   const url = 'http://192.168.0.105:51342/api/Users/'
     fetch(url, {
       method: 'Post',

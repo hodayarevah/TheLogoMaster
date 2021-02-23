@@ -278,10 +278,26 @@ categtitle:{
       flex: 1,
       width: '50%'
     },
-    containerh: { flex: 1, padding: 16, paddingTop: 50, backgroundColor: '#fff' },
-    headh: { height: 40, backgroundColor: '#f1f8ff' },
-    texth: { margin: 6 },
-    dataWrapperh: { marginTop: -1 }
+
+    textx:{
+      color: "#5271ff",
+    fontSize: 10,
+    fontWeight: "bold",
+    textAlign: "center",
+    margin: 10 ,
+    
+
+
+    },
+    head:{ height: 50, backgroundColor: '#ffff' },
+    container: { marginTop: "60%", backgroundColor: '#B4DAED' },
+    texth: {  color: "#5271ff",
+    fontSize: 22,
+    fontWeight: "bold",
+    textAlign: "center",
+   
+ },
+    
     
 
   })

@@ -20,7 +20,16 @@ class  LoginView extends React.Component {
     };
   }
 
-  
+  async componentDidMount  (){
+    // clearInterval(this.interval)
+     await this.SubmitNote()
+     this._unsubscribeFocus  = await this.props.navigation.addListener('focus',(payload) =>{
+     //clearInterval(this.interval)
+     this.SubmitNote()
+ 
+   
+ });
+   }
   
   SubmitNote = async() =>{
  let  name=this.state.UserName;
