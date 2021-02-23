@@ -44,7 +44,7 @@ class MyPageView extends Component {
             </View>
             <Text  style={styles.proftext}  > points : {this.state.points} </Text>
             <Text  style={styles.proftext}  > stage : {this.state.stage} </Text>
-           <Button  style={styles.butn}  onPress={() =>this.props.navigation.navigate('gameView',{id:this.state.id,points:this.state.points,stage:this.state.stage})}>
+           <Button  style={styles.butn}  onPress={() =>this.props.navigation.navigate('gameView',{id:this.state.id,points:this.state.points,stage:this.state.stage,UserName:this.state.UserNameU,imgU:this.state.img})}>
            <Text style={styles.words} > let's Go </Text>
              </Button>
 

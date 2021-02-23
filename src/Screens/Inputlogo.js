@@ -10,7 +10,7 @@ class Inputlogo extends Component {
     }
   
   render(){
-  
+
     return (
   
         <CharacterInput

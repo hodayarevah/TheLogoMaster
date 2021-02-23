@@ -259,11 +259,15 @@ categtitle:{
     width: 150, 
     alignSelf: 'center'
   },
+  butnext:{
+    marginTop:'70%'
+  },
   
 
     imagene: {
       flex: 1,
       width: '50%'
     },
+    
 
   })
