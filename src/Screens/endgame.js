@@ -21,7 +21,7 @@ render() {
         <Image style={styles.king} source= {require('../fire.gif')} />
 
 
-        <Button rounded style={styles.butn} onPress={() =>this.props.navigation.navigate('winner')}
+        <Button rounded style={styles.butn} onPress={() =>this.props.navigation.navigate('WinnerPage')}
 >
           <Text style={styles.words}> winners table</Text>
         

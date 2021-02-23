@@ -24,6 +24,7 @@ class gameView extends Component {
         UserName:"",
         img:"",
         flag:0,
+        skip:0,
 
     }
   
@@ -49,7 +50,7 @@ class gameView extends Component {
 
     this.props.navigation.navigate('nextlevel',{id:this.state.userupd.Id,points:this.state.userupd.Points,stage:this.state.userupd.UserStage,UserName:this.state.UserName,img:this.state.img});
     console.log(this.state.userupd.Id,this.state.userupd.Points,this.state.userupd.UserStage,this.state.UserName,this.state.img)
-    this.setState({timer:100, len:[]})
+    this.setState({timer:100, len:[],flag:0,skip:0})
   }
 
   getdata=async()=>{
@@ -58,7 +59,7 @@ class gameView extends Component {
     const {UserName} = this.props.route.params;
     const {imgU} = this.props.route.params;
     this.setState({UserName:UserName,img:imgU})
-    if(stage>=30)
+    if(stage>30)
     {
       this.props.navigation.navigate('endgame')
     }
@@ -80,8 +81,9 @@ class gameView extends Component {
 
    
    const internal = setInterval(() => {
- 
-    if (this.state.timer <= 0 ) {
+
+    if( (this.state.timer <= 0 )||(this.state.skip==1))
+     {
       if(this.state.flag==0)
       {
       this.setState({flag:1})
@@ -176,8 +178,8 @@ class gameView extends Component {
 />
 
       </Row>
-      <Button rounded style={styles.butnx}  onPress={() => this.props.navigation.navigate('newuser')}>
-            <Text style={styles.words}> </Text>
+      <Button rounded style={styles.butnx}  onPress={() => this.setState({skip:1})}>
+            <Text style={styles.words}>skip</Text>
           
             </Button>
             </ScrollView>
