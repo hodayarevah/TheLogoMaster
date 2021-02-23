@@ -7,6 +7,7 @@ import * as ImagePicker from "expo-image-picker";
 import {Image,View ,ImageBackground} from 'react-native';
 import {  Text,Item, Button,Form,Input, Label, Icon, Thumbnail } from 'native-base';
 import styles from "./MyStyle";
+import myUrl from "./Url";
 class NewUser extends Component {
   constructor(props) {
     super(props);
@@ -73,7 +74,7 @@ else{
     Img:this.state.image}
 
  
-  const url = 'http://192.168.0.105:51342/api/Users/'
+  const url = (myUrl+'Users/')
     fetch(url, {
       method: 'Post',
       body: JSON.stringify(this.state.newuser),

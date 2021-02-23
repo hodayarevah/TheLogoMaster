@@ -6,6 +6,7 @@ import { ImageBackground } from 'react-native';
 import styles from "./MyStyle";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input } from 'react-native-elements';
+import myUrl from "./Url";
 class  LoginView extends React.Component {
   constructor(props) {
     super(props);
@@ -38,7 +39,7 @@ class  LoginView extends React.Component {
     }
     else{
     
-      const url = `http://192.168.0.105:51342/api/Users/`
+      const url = (myUrl+'Users/')
 
       const userf = await fetch(url, {
           method: 'Put',

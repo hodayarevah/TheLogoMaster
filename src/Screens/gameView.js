@@ -8,6 +8,8 @@ import CountDown from 'react-native-countdown-component';
 //import CountDown from 'react-native-countdown-component';
 import { DrawerActions } from '@react-navigation/native';
 import CharacterInput from 'react-native-character-input';
+import myUrl from "./Url";
+
 
 class gameView extends Component {
   constructor(props) {
@@ -41,7 +43,7 @@ class gameView extends Component {
   postdata=async()=>{
     
     
-    const url = 'http://192.168.0.105:51342/api/Users/'
+    const url = (myUrl+'Users/')
    const userdata= await fetch(url, {
       method: 'Delete',
       body: JSON.stringify(this.state.userupd),
@@ -50,6 +52,7 @@ class gameView extends Component {
         'Accept': 'application/json; charset=UTF-8'
       })
     })
+    this.setState({})
 
     this.props.navigation.navigate('nextlevel',{id:this.state.userupd.Id,points:this.state.userupd.Points,stage:this.state.userupd.UserStage,UserName:this.state.UserName,img:this.state.img});
     console.log(this.state.userupd.Id,this.state.userupd.Points,this.state.userupd.UserStage,this.state.UserName,this.state.img)
@@ -61,14 +64,18 @@ class gameView extends Component {
     const {stage} = this.props.route.params;
     const {UserName} = this.props.route.params;
     const {imgU} = this.props.route.params;
+   
     this.setState({UserName:UserName,img:imgU})
-    if(stage>30)
+    if(stage>=30)
     {
-      this.props.navigation.navigate('endgame')
+      const {id} = this.props.route.params;
+      const {points} = this.props.route.params;
+      this.props.navigation.navigate('endgame',{id:id,points:points,stage:stage,UserName:this.state.UserName,img:this.state.img});
+      this.setState({timer:100, len:[],flag:0,skip:0, hint:0, x:"", first:""})
     }
     else{
     this.setState({level:stage})
-    const url = `http://192.168.0.105:51342/api/Logo?numStage=`+stage
+    const url = (myUrl+`Logo?numStage=`+stage)
     const lego =await  fetch(url, {
        method:'Get',
       headers: new Headers({
@@ -128,6 +135,7 @@ class gameView extends Component {
   }
 
   async componentDidMount  (){
+ 
    // clearInterval(this.interval)
     await this.getdata()
     this._unsubscribeFocus  = await this.props.navigation.addListener('focus',(payload) =>{
