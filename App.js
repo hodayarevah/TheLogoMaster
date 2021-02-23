@@ -11,6 +11,7 @@ import LoginView from './src/Screens/LoginView'
 import gameView from './src/Screens/gameView';
 import mypro from "./src/Screens/MyPageView"
 import nextlevel from './src/Screens/nextlevel';
+
 import NewUser from './src/Screens/NewUser';
 import { I18nManager } from "react-native";
 import endgame from "./src/Screens/endgame";
@@ -47,6 +48,7 @@ export default class App extends React.Component {
        <Drawer.Screen name="newuser" component={NewUser} />
        <Drawer.Screen name="endgame" component={endgame} />
        <Drawer.Screen name="nextlevel"component={nextlevel}/>
+      
          </Drawer.Navigator >
       </NavigationContainer>
     );

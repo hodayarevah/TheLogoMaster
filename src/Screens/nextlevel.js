@@ -15,7 +15,7 @@ class nextlevel extends Component {
 }
         
       };
-      async  componentDidMount(){
+      async componentDidMount(){
             await this.getdata()
             this._unsubscribeFocus  = await this.props.navigation.addListener('focus',(payload) =>{
             this.getdata()
@@ -23,8 +23,7 @@ class nextlevel extends Component {
           
         });
           }
-          getdata()
-          {
+       getdata=async()=>{
         const {id} = this.props.route.params;
         const {points} = this.props.route.params;
         const {stage} = this.props.route.params;

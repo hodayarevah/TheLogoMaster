@@ -58,8 +58,8 @@ marginTop:'55%'
     height: 250, 
     width: 230, 
     alignSelf: 'center',
-    marginTop:'5%'
-    
+    marginTop:'5%',
+    marginBottom:"10%",
       },
   butn:{
     color: "#4682b4",
@@ -184,10 +184,20 @@ proftexts:{
   fontSize: 42,
   fontWeight: "bold",
   textAlign: "center",
-  marginBottom:'20%',
+  marginBottom:'10%',
   textShadowColor:"#17F1FF",
   textShadowRadius:10,
   paddingTop:"10%"
+},
+
+proftextstime:{
+  color: "white",
+  fontSize: 42,
+  fontWeight: "bold",
+  textAlign: "center",
+  marginBottom:'10%',
+  textShadowColor:"#f632f4",
+  textShadowRadius:10,
 },
 noteViewtitlex:{
 

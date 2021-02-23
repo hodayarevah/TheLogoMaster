@@ -20,9 +20,10 @@ class gameView extends Component {
         stagepoints:"",
         len:[],
         guess:[],
-        timer: 100,
+        timer: 10,
         UserName:"",
-        img:""
+        img:"",
+        flag:0,
 
     }
   
@@ -81,6 +82,9 @@ class gameView extends Component {
    const internal = setInterval(() => {
  
     if (this.state.timer <= 0 ) {
+      if(this.state.flag==0)
+      {
+      this.setState({flag:1})
       clearInterval(internal)
     const {id} = this.props.route.params;
     const {points} = this.props.route.params;
@@ -94,9 +98,10 @@ class gameView extends Component {
     }
       this.postdata()
     } 
+  }
     else {
       this.setState({timer: this.state.timer - 1})
-      if(this.state.guess==this.state.logoname)
+      if((this.state.guess==this.state.logoname)||(this.state.guess==this.state.logoname.toUpperCase()))
       {
         const {id} = this.props.route.params;
         const {points} = this.props.route.params;
@@ -109,19 +114,19 @@ class gameView extends Component {
          UserStage:newscore,
         }
 
-        
+        clearInterval(internal)
         this.postdata()
       }
     }
   }, 1000)
-
-  
   }
   }
 
   async componentDidMount  (){
+   // clearInterval(this.interval)
     await this.getdata()
     this._unsubscribeFocus  = await this.props.navigation.addListener('focus',(payload) =>{
+    //clearInterval(this.interval)
     this.getdata()
 
   
@@ -149,13 +154,13 @@ class gameView extends Component {
   
     return (
     
-      <ScrollView >
+   
 
       <ImageBackground source= {require('../backb.png')} style={styles.image}>
-   
+      <ScrollView >
       <View >
       <Text style={styles.proftexts} > Stage {this.state.level} </Text>
-      <Text style={styles.proftexts} > timer {this.state.timer} </Text>
+      <Text style={styles.proftextstime} > timer {this.state.timer} </Text>
      <Image style={style=styles.logoimage} source={{uri:this.state.logoimg}}/>  
      
       </View>
@@ -174,8 +179,9 @@ class gameView extends Component {
             <Text style={styles.words}> </Text>
           
             </Button>
+            </ScrollView>
       </ImageBackground>
-      </ScrollView>
+    
     );
   }
 
