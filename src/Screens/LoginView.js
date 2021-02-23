@@ -22,10 +22,8 @@ class  LoginView extends React.Component {
 
   async componentDidMount  (){
    
-      this.SubmitNote()
-     this._unsubscribeFocus  =  this.props.navigation.addListener('focus',(payload) =>{
   
-     this.SubmitNote()
+     this._unsubscribeFocus  =  this.props.navigation.addListener('focus',(payload) =>{
  
    
  });

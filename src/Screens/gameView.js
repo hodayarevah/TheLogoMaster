@@ -25,6 +25,9 @@ class gameView extends Component {
         img:"",
         flag:0,
         skip:0,
+        hint:0,
+        x:"",
+        first:"",
 
     }
   
@@ -50,7 +53,7 @@ class gameView extends Component {
 
     this.props.navigation.navigate('nextlevel',{id:this.state.userupd.Id,points:this.state.userupd.Points,stage:this.state.userupd.UserStage,UserName:this.state.UserName,img:this.state.img});
     console.log(this.state.userupd.Id,this.state.userupd.Points,this.state.userupd.UserStage,this.state.UserName,this.state.img)
-    this.setState({timer:100, len:[],flag:0,skip:0})
+    this.setState({timer:100, len:[],flag:0,skip:0, hint:0, x:"", first:""})
   }
 
   getdata=async()=>{
@@ -163,11 +166,17 @@ class gameView extends Component {
       <View >
       <Text style={styles.proftexts} > Stage {this.state.level} </Text>
       <Text style={styles.proftextstime} > timer {this.state.timer} </Text>
+      {
+          (this.state.hint==0?    <Button rounded style={styles.btnhint}  onPress={() => this.setState({first:this.state.len[0].toUpperCase(),hint:1,x:Array(this.state.len.length).fill('_').join('')})}>
+          <Text style={styles.words}>GET A HINT</Text>
+        
+          </Button>:null)
+        }
      <Image style={style=styles.logoimage} source={{uri:this.state.logoimg}}/>  
      
       </View>
       <Row  style={style=styles.rowguss}>
-     
+     { this.state.hint==0? 
       <CharacterInput
   placeHolder={Array(this.state.len.length).fill('_').join('')}
   showCharBinary={Array(this.state.len.length).fill('1').join('')}
@@ -175,13 +184,23 @@ class gameView extends Component {
   inputType='contained'
   keyboardType='default'
   
-/>
-
+/>:      <CharacterInput
+  placeHolder={this.state.first+this.state.x.substring(1)}
+  showCharBinary={Array(this.state.len.length).fill('1').join('')}
+  handleChange={(guess) => { this.setState({guess}) }}
+  inputType='contained'
+  keyboardType='default'
+  
+/>}
       </Row>
+      <Row>
+     
       <Button rounded style={styles.butnx}  onPress={() => this.setState({skip:1})}>
-            <Text style={styles.words}>skip</Text>
+            <Text style={styles.words}>SKIP</Text>
           
             </Button>
+            </Row>
+      
             </ScrollView>
       </ImageBackground>
     

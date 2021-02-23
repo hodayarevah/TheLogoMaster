@@ -73,6 +73,13 @@ marginTop:'55%'
     marginTop:'20%',
     color: "#4682b4",
     alignSelf: 'center',
+    borderColor:"#f632f4",
+  },
+  btnhint:{
+    marginTop:'2%',
+    color: "#4682b4",
+    alignSelf: 'center',
+    borderColor:"#17F1FF",
   },
  buttadd:{
   color:  "#4682b4"
