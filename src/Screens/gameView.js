@@ -18,9 +18,9 @@ class gameView extends Component {
         logoname:"n",
         userupd :[],
         stagepoints:"",
-        len:["n","b","a"],
+        len:[],
         guess:[],
-        timer: 10,
+        timer: 100,
         UserName:"",
         img:""
 
@@ -48,7 +48,7 @@ class gameView extends Component {
 
     this.props.navigation.navigate('nextlevel',{id:this.state.userupd.Id,points:this.state.userupd.Points,stage:this.state.userupd.UserStage,UserName:this.state.UserName,img:this.state.img});
     console.log(this.state.userupd.Id,this.state.userupd.Points,this.state.userupd.UserStage,this.state.UserName,this.state.img)
-    this.setState({timer:10})
+    this.setState({timer:100, len:[]})
   }
 
   getdata=async()=>{
@@ -144,9 +144,11 @@ class gameView extends Component {
  
   render() 
   {
-  
+    if(this.state.len.length>0)
+    {
   
     return (
+    
       <ScrollView >
 
       <ImageBackground source= {require('../backb.png')} style={styles.image}>
@@ -164,6 +166,7 @@ class gameView extends Component {
   handleChange={(guess) => { this.setState({guess}) }}
   inputType='contained'
   keyboardType='default'
+  
 />
 
       </Row>
@@ -175,8 +178,15 @@ class gameView extends Component {
       </ScrollView>
     );
   }
-}
 
+else
+{
+  return(
+  <Image style={style=styles.logoimage} source={{uri: "/02/322868_1100-1100x628.jpg"}}/>  
+  )
+}
+}
+}
 export default gameView;
 
 
