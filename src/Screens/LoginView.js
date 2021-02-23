@@ -10,9 +10,12 @@ class  LoginView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      UserName:"",
-      UserPass:"",
+      UserName:"hodaya",
+      UserPass:"aaa",
       UserId:"",
+      pointsU:0,
+      stageU:1,
+      imgU:"",
 
     };
   }
@@ -28,7 +31,8 @@ class  LoginView extends React.Component {
     }
     else{
     
-      const url = `http://192.168.1.101:51342/api/Users/`
+      const url = `http://192.168.0.105:51342/api/Users/`
+
       const userf = await fetch(url, {
           method: 'Put',
           body:   JSON.stringify([name, pass]),
@@ -37,12 +41,11 @@ class  LoginView extends React.Component {
             'Accept': 'application/json; charset=UTF-8'
           })
         })
-        
+     
         const res= await userf.json()
-          if(res != null)
+          if(res.UserName != null)
             {
-             alert("sucssess")
-             this.props.navigation.navigate('gameView');
+             this.props.navigation.navigate('mypro',{UserId:res.Id,pointsU:res.Points,stageU:res.UserStage,UserName:res.UserName,imgU:res.Img});
            };
           
             

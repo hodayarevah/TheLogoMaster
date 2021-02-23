@@ -11,9 +11,10 @@ import LoginView from './src/Screens/LoginView'
 import gameView from './src/Screens/gameView';
 import mypro from "./src/Screens/MyPageView"
 import NewUser from './src/Screens/NewUser';
-import WinnerPage from './src/Screens/WinnerPage';
-
-
+import { I18nManager } from "react-native";
+import endgame from "./src/Screens/endgame"
+I18nManager.forceRTL(false);
+I18nManager.allowRTL(false);
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -37,13 +38,13 @@ export default class App extends React.Component {
     }
     return (
       <NavigationContainer>
-       <Drawer.Navigator  initialRouteName='winners'>
+       <Drawer.Navigator  initialRouteName='Home'>
        <Drawer.Screen name="Home" component={HomeView}  />
        <Drawer.Screen name="login" component={LoginView} />
        <Drawer.Screen name="gameView" component={gameView} />
        <Drawer.Screen name="mypro" component={mypro} />
        <Drawer.Screen name="newuser" component={NewUser} />
-       <Drawer.Screen name="winners" component={WinnerPage} />
+       <Drawer.Screen name="endgame" component={endgame} />
          </Drawer.Navigator >
       </NavigationContainer>
     );
