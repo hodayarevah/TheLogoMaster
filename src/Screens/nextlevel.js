@@ -16,7 +16,7 @@ class nextlevel extends Component {
         
       };
       async componentDidMount(){
-            await this.getdata()
+             this.getdata()
             this._unsubscribeFocus  = await this.props.navigation.addListener('focus',(payload) =>{
             this.getdata()
         

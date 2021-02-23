@@ -16,15 +16,16 @@ export default class WinnerPage extends Component {
 
 
   async componentDidMount  (){
+    // clearInterval(this.interval)
      await this.getdata()
      this._unsubscribeFocus  = await this.props.navigation.addListener('focus',(payload) =>{
-
+     //clearInterval(this.interval)
      this.getdata()
  
    
  });
    }
-   getdata=async()=>{
+  async componentDidMount() {
 
     const url = `http://192.168.0.105:51342/api/Users/`
     const userf =await fetch(url, {
@@ -41,6 +42,7 @@ export default class WinnerPage extends Component {
     const Data = [];
         if(res != null)
           {
+         
            let rowData = [];
           res.forEach(element => {
               i++;

@@ -176,8 +176,8 @@ class gameView extends Component {
 />
 
       </Row>
-      <Button rounded style={styles.butnx}  onPress={() => this.props.navigation.navigate('newuser')}>
-            <Text style={styles.words}> </Text>
+      <Button rounded style={styles.butnx}  onPress={this.setState({timer:0})}>
+            <Text style={styles.words}>skip</Text>
           
             </Button>
             </ScrollView>
