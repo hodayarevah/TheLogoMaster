@@ -218,6 +218,17 @@ ava:{
     marginLeft:'30%',
     marginBottom:'5%'
 },
+avat:{
+
+  width: 150,
+    height: 150,
+    borderColor: "#17F1FF",
+    borderWidth: 2,
+    borderRadius: 75,
+    zIndex:99,
+
+
+},
 
 iconaddnote:{
   color:'#4682b4',

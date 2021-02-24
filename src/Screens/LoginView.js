@@ -10,8 +10,8 @@ class  LoginView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      UserName:"hodaya",
-      UserPass:"aaa",
+      UserName:"Hodaya",
+      UserPass:"Aaa",
       UserId:"",
       pointsU:0,
       stageU:1,
