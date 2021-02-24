@@ -50,11 +50,6 @@ else{
     UserStage:this.state.stage,
     Img:this.state.image}
 
-<<<<<<< Updated upstream
- 
-=======
-
->>>>>>> Stashed changes
   const url = 'http://192.168.0.105:51342/api/Users/'
     fetch(url, {
       method: 'Post',
