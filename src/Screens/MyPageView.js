@@ -16,7 +16,7 @@ class MyPageView extends Component {
       };
     }
     async componentDidMount  (){
-       this.getdata()
+      await this.getdata()
       this._unsubscribeFocus  = await this.props.navigation.addListener('focus',(payload) =>{
       this.getdata()
   
@@ -56,7 +56,11 @@ class MyPageView extends Component {
            <Button  style={styles.butn}  onPress={() =>this.props.navigation.navigate('gameView',{id:this.state.id,points:this.state.points,stage:this.state.stage,UserName:this.state.UserNameU,imgU:this.state.img})}>
            <Text style={styles.words} > let's Go </Text>
              </Button>
-
+             <Button rounded style={styles.butn} onPress={() =>this.props.navigation.navigate('WinnerPage')}
+>
+          <Text style={styles.words}> winners table</Text>
+        
+          </Button>
 </ScrollView>
   </SafeAreaView>
   </ImageBackground >

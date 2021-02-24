@@ -3,7 +3,7 @@ import { Icon, Text ,Button} from 'native-base';
 import { ImageBackground, Image } from 'react-native';
 import { Col, Row } from 'react-native-easy-grid';
 import styles from "./MyStyle";
-
+import myUrl from "./Url";
 class HomeView extends Component {
   constructor(props) {
     super(props);
@@ -56,7 +56,7 @@ class HomeView extends Component {
         }
   
     postdata=()=>{
-  const url = `http://192.168.0.105:51342/api/Logo/`
+  const url = (myUrl+`Logo/`)
   let data=this.state.logolist
   fetch(url, {
     method: 'Post',

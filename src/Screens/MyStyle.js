@@ -73,6 +73,13 @@ marginTop:'55%'
     marginTop:'20%',
     color: "#4682b4",
     alignSelf: 'center',
+    borderColor:"#f632f4",
+  },
+  btnhint:{
+    marginTop:'2%',
+    color: "#4682b4",
+    alignSelf: 'center',
+    borderColor:"#17F1FF",
   },
  buttadd:{
   color:  "#4682b4"
@@ -217,17 +224,6 @@ ava:{
     borderRadius: 75,
     marginLeft:'30%',
     marginBottom:'5%'
-},
-avat:{
-
-  width: 150,
-    height: 150,
-    borderColor: "#17F1FF",
-    borderWidth: 2,
-    borderRadius: 75,
-    zIndex:99,
-
-
 },
 
 iconaddnote:{

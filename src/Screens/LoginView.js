@@ -6,12 +6,13 @@ import { ImageBackground } from 'react-native';
 import styles from "./MyStyle";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input } from 'react-native-elements';
+import myUrl from "./Url";
 class  LoginView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      UserName:"Hodaya",
-      UserPass:"Aaa",
+      UserName:"hodaya",
+      UserPass:"aaa",
       UserId:"",
       pointsU:0,
       stageU:1,
@@ -22,7 +23,7 @@ class  LoginView extends React.Component {
 
   async componentDidMount  (){
    
-//refresh
+  
      this._unsubscribeFocus  =  this.props.navigation.addListener('focus',(payload) =>{
  
    
@@ -38,7 +39,7 @@ class  LoginView extends React.Component {
     }
     else{
     
-      const url = `http://192.168.0.105:51342/api/Users/`
+      const url = (myUrl+'Users/')
 
       const userf = await fetch(url, {
           method: 'Put',
