@@ -48,7 +48,7 @@ class MyPageView extends Component {
 
             <View style={styles.noteViewtitlex}>
 
-            <Image style={styles.ava} rounded size="large" source={{  uri:  'https://assets.brandfetch.io/f946b65b538b491.png', }}/>
+            <Image style={styles.ava} rounded size="large" source={{  uri:  'https://img.pngio.com/fileuser-circlepng-wikimedia-commons-png-user-256_256.png', }}/>
             <Text style={styles.notetitle} > Hello {this.state.UserNameU} </Text>
             </View>
             <Text  style={styles.proftext}  > points : {this.state.points} </Text>
